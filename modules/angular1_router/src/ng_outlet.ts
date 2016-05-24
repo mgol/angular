@@ -240,7 +240,7 @@ function ngLinkDirective($rootRouter, $parse) {
     }
 
     element.on('click', event => {
-      if (event.which !== 1 || !navigationInstruction) {
+      if (event.which !== 1 || event.ctrlKey || event.metaKey || !navigationInstruction) {
         return;
       }
 
