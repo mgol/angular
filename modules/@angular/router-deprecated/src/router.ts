@@ -9,7 +9,7 @@ import {RouterOutlet} from './directives/router_outlet';
 import {getCanActivateHook} from './lifecycle/route_lifecycle_reflector';
 import {RouteDefinition} from './route_config/route_config_impl';
 import {Injectable, Inject} from '@angular/core';
-import {DefaultInstruction} from "./instruction";
+import {DefaultInstruction} from './instruction';
 
 let _resolveToTrue = PromiseWrapper.resolve(true);
 let _resolveToFalse = PromiseWrapper.resolve(false);

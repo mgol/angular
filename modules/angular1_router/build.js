@@ -23,7 +23,7 @@ var files = [
 ];
 
 var PRELUDE = '(function(){\n';
-var POSTLUDE = '\n}());\n';
+var POSTLUDE = '\n}());\n\nmodule.exports = \'ngComponentRouter\';\n';
 
 function main(modulesDirectory) {
   var angular1RouterModuleDirectory = modulesDirectory + '/angular1_router';
@@ -35,7 +35,7 @@ function main(modulesDirectory) {
   var moduleTemplate = fs.readFileSync(
       angular1RouterModuleDirectory + '/src/module_template.js', 'utf8');
 
-  var dir = modulesDirectory + '/angular2/src/router/';
+  var dir = modulesDirectory + '/@angular/router-deprecated/src/';
   var sharedCode = files.reduce(function (prev, file) {
     return prev + transform(fs.readFileSync(dir + file, 'utf8'));
   }, '');
@@ -77,7 +77,7 @@ function transform(contents) {
 
 function isFacadeModule(modulePath) {
   return modulePath.indexOf('facade') > -1 ||
-    modulePath === 'angular2/src/core/reflection/reflection';
+    modulePath === '@angular/core/src/reflection/reflection';
 }
 
 module.exports = function(modulesDirectory, outputDirectory) {
