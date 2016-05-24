@@ -115,8 +115,8 @@ function routerFactory($q, $location, $browser, $rootScope, $injector, $routerRo
     }
   });
 
-  router.subscribe(function () {
-    $rootScope.$broadcast('$routeChangeSuccess', {});
+  router.subscribe(function (change) {
+    $rootScope.$broadcast('$routeChangeSuccess', change);
   });
 
   return router;
