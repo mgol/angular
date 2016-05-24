@@ -118,16 +118,13 @@ function ngOutletDirective($animate, $q: ng.IQService, $rootRouter) {
         newScope.$$router = this.controller.$$router;
         this.deferredActivation = $q.defer();
 
-        let clone = $transclude(newScope, clone => {});
-
-        let activateView = () => {
+        let clone = $transclude(newScope, clone => {
           $animate.enter(clone, null, this.currentElement || element);
           this.cleanupLastView();
-          this.currentElement = clone;
-          this.currentScope = newScope;
-        };
-
-        return this.deferredActivation.promise.then(activateView, activateView);
+        });
+        this.currentElement = clone;
+        this.currentScope = newScope;
+        return this.deferredActivation.promise;
       }
     }
 
